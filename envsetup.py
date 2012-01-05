@@ -39,13 +39,11 @@ def urldownload(confurl = ""):
     	buffer = u.read(block_sz)
     	if not buffer:
         	break
-
     	file_size_dl += len(buffer)
     	f.write(buffer)
     	status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
     	status = status + chr(8)*(len(status)+1)
     	print status,
-
 	f.close()
 
 def confdownload():
