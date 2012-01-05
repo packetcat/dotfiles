@@ -12,15 +12,16 @@ import urllib2
 vimrcurl = "https://raw.github.com/staticsafe/dotfiles/master/.vimrc"
 zshrcurl = "https://raw.github.com/staticsafe/dotfiles/master/.zshrc"
 tmuxurl = "https://raw.github.com/staticsafe/dotfiles/master/.tmux.conf"
+vimdirurl = "https://github.com/staticsafe/dotfiles/raw/master/vimdir.tar.bz2"
 
-def rootcheck():
-	#rootcheck
-	uid = os.getuid()
-	if uid != 0:
-		print 'This script must be run with sudo if you have it!'
+def sudocheck():
+	#sudocheck
+	sudopath = "/usr/bin/sudo"
+	if os.path.isfile(sudopath) == True:
+		print 'This script needs sudo to run!'
 		raise SystemExit
 	else:
-		print 'Root check: PASSED!'
+		print 'Sudo check: PASSED!'
 
 def urldownload(confurl = ""):
 	#Thanks PabloG from StackExchange for this little snippet - http://stackoverflow.com/a/22776
@@ -51,7 +52,8 @@ def confdownload():
 	urldownload(confurl = vimrcurl)
 	urldownload(confurl = zshrcurl)
 	urldownload(confurl = tmuxurl)
-
+	urldownload(confurl = vimdirurl)
+	untar = call("tar xvf vimdir.tar.bz2", shell = True)
 
 def envArch():
 	#Install relevant packagtes
