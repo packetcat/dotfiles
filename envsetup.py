@@ -23,7 +23,7 @@ def rootcheck():
 		print 'Root check: PASSED!'
 
 def urldownload(confurl = ""):
-	#Thanks PabloG from StackExchange for this little snippet
+	#Thanks PabloG from StackExchange for this little snippet - http://stackoverflow.com/a/22776
 	url = confurl
 
 	file_name = url.split('/')[-1]
@@ -83,7 +83,7 @@ def main():
 	if currentdir != homedir:
 		os.chdir(homedir)
 	else:
-		print "Home directory check : PASSED!'"
+		print "Home directory check : PASSED!"
 	
 	#distrocheck
 	userdistro = platform.linux_distribution()
