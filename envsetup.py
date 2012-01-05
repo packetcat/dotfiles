@@ -89,7 +89,7 @@ def main():
 	userdistro = platform.linux_distribution()
 
 	if userdistro[0] == "Fedora":
-		envFedora():
+		envFedora()
 	elif userdistro[0] == "debian":
 		envDebian()
 	elif userdistro[0] == "Arch" or os.path.isfile("/etc/arch-release") == True:
