@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #Personal environment setup script
-#Dependencies - Supported distros, sudo
+#Dependencies - Supported distros, sudo, python2
 
 import os
 from subprocess import call
@@ -24,7 +24,7 @@ def sudocheck():
 		print 'Sudo check: PASSED!'
 
 def urldownload(confurl = ""):
-	#Thanks PabloG from StackExchange for this little snippet - http://stackoverflow.com/a/22776
+	#Thanks PabloG from StackOverflow for this little snippet - http://stackoverflow.com/a/22776
 	url = confurl
 
 	file_name = url.split('/')[-1]
@@ -53,29 +53,39 @@ def confdownload():
 	urldownload(confurl = zshrcurl)
 	urldownload(confurl = tmuxurl)
 	urldownload(confurl = vimdirurl)
+	
 	untar = call("tar xvf vimdir.tar.bz2", shell = True)
 
+def defaultshell():
+	print "Setting default shell for this user to zsh! Log out and log back in to see changes."
+	setzsh = call("chsh -s $(which zsh)", shell = True)
+
 def envArch():
+	sudocheck()
 	#Install relevant packagtes
 	installpackages  = call("sudo pacman --noconfirm -S vim zsh tmux git subversion", shell=True)
 
 	#Get relevant dotfiles
 	confdownload()
+	defaultshell()
 
 def envFedora():
+	sudocheck()
 	#Install relevant packages
 	installpackages = call ("sudo yum install -y vim zsh tmux git subversion", shell=True)
 
 	#Get relevant dotfiles
 	confdownload()
-
+	defaultshell()
 
 def envDebian():
+	sudocheck()
 	#Install relevant packages
 	installpackages = call ("sudo apt-get install --assume-yes vim zsh tmux git subversion", shell=True)
 
 	#Get relevant dotfiles
 	confdownload()
+	defaultshell()
 
 def main():
 	#homedircheck
@@ -83,6 +93,7 @@ def main():
 	currentdir = os.getcwd()
 
 	if currentdir != homedir:
+		print "Changing cwd to homedir!"
 		os.chdir(homedir)
 	else:
 		print "Home directory check : PASSED!"
