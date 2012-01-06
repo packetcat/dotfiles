@@ -48,26 +48,49 @@ def urldownload(confurl = ""):
 		print status,
 	f.close()
 
-def confdownload():
-	urldownload(confurl = vimrcurl)
-	urldownload(confurl = zshrcurl)
-	urldownload(confurl = tmuxurl)
-	urldownload(confurl = vimdirurl)
+def checksandactions():
+	#vars for various conf files and dirs
+	vimrcdir = os.path.join(os.environ['HOME'], ".vimrc")
+	zshrcdir = os.path.join(os.environ['HOME'], ".zshrc")
+	tmuxconfdir = os.path.join(os.environ['HOME'], ".tmux.conf")
+	vimdir = os.path.join(os.environ['HOME'], ".vim")
+	usershell = os.getenv('SHELL')
 	
-	untar = call("tar xvf vimdir.tar.bz2", shell = True)
-
-def defaultshell():
-	print "Setting default shell for this user to zsh! Log out and log back in to see changes."
-	setzsh = call("chsh -s $(which zsh)", shell = True)
+	#checks to prevent clobbering
+	if os.path.isfile(vimrcdir) == True:
+		print ".vimrc already exists, skipping download!"
+	else:
+		urldownload(confurl = vimrcurl)
+	
+	if os.path.isfile(zshrcdir) == True:
+		print ".zshrc already exists, skipping download!"
+	else:
+		urldownload(confurl = zshrcurl)
+	
+	if os.path.isfile(tmuxconfdir) == True:
+		print ".tmux.conf already exists, skipping download!"
+	else:
+		urldownload(confurl = tmuxurl)
+	
+	if os.path.isdir(vimdir) == True:
+		print ".vim dir already exists, skipping download!"
+	else:
+		urldownload(confurl = vimdirurl)
+		untar = call("tar xvf vimdir.tar.bz2", shell = True)
+	
+	if usershell = "/bin/zsh":
+		print "Your default shell is already zsh! Skipping."
+	else:
+		print "Setting default shell for this user to zsh! Log out and log back in to see changes."
+		setzsh = call("chsh -s $(which zsh)", shell = True)
 
 def envArch():
 	sudocheck()
-	#Install relevant packagtes
+	#Install relevant packages
 	installpackages  = call("sudo pacman --noconfirm -S vim zsh tmux git subversion", shell=True)
 
 	#Get relevant dotfiles
-	confdownload()
-	defaultshell()
+	checksandactions()
 
 def envFedora():
 	sudocheck()
@@ -75,8 +98,7 @@ def envFedora():
 	installpackages = call ("sudo yum install -y vim zsh tmux git subversion", shell=True)
 
 	#Get relevant dotfiles
-	confdownload()
-	defaultshell()
+	checksandactions()
 
 def envDebian():
 	sudocheck()
@@ -84,8 +106,7 @@ def envDebian():
 	installpackages = call ("sudo apt-get install --assume-yes vim zsh tmux git subversion", shell=True)
 
 	#Get relevant dotfiles
-	confdownload()
-	defaultshell()
+	checksandactions()
 
 def main():
 	#homedircheck
