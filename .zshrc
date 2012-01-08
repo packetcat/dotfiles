@@ -22,4 +22,4 @@ setopt inc_append_history
 #aliases
 alias rmdir='rm -r'
 alias sl='ls'
-alias octalperm='stat -c \'%A %a %n\' *'
+alias octalperm="stat -c '%A %a %n' *"
