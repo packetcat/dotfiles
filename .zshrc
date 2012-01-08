@@ -13,3 +13,4 @@ setopt EXTENDED_GLOB
 #aliases
 alias rmdir='rm -r'
 alias sl='ls'
+alias octalperm='stat -c \'%A %a %n\' *'
