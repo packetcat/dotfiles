@@ -12,7 +12,7 @@ import urllib2
 vimrcurl = "https://raw.github.com/staticsafe/dotfiles/master/.vimrc"
 zshrcurl = "https://raw.github.com/staticsafe/dotfiles/master/.zshrc"
 tmuxurl = "https://raw.github.com/staticsafe/dotfiles/master/.tmux.conf"
-vimdirurl = "https://github.com/staticsafe/dotfiles/raw/master/vimdir.tar.bz2"
+vimdirurl = "http://dl.dropbox.com/u/2888062/vimdir.tar.bz2"
 
 def sudocheck():
 	#sudocheck
@@ -76,7 +76,7 @@ def checksandactions():
 		print ".vim dir already exists, skipping download!"
 	else:
 		urldownload(confurl = vimdirurl)
-		untar = call("tar xvf vimdir.tar.bz2", shell = True)
+		untar = call("tar pxvf vimdir.tar.bz2 && rm vimdir.tar.bz2", shell = True)
 	
 	if usershell == "/bin/zsh":
 		print "Your default shell is already zsh! Skipping."
