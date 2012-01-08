@@ -78,7 +78,7 @@ def checksandactions():
 		urldownload(confurl = vimdirurl)
 		untar = call("tar xvf vimdir.tar.bz2", shell = True)
 	
-	if usershell = "/bin/zsh":
+	if usershell == "/bin/zsh":
 		print "Your default shell is already zsh! Skipping."
 	else:
 		print "Setting default shell for this user to zsh! Log out and log back in to see changes."
