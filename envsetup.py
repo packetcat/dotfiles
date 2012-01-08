@@ -83,6 +83,7 @@ def checksandactions():
 	else:
 		print "Setting default shell for this user to zsh! Log out and log back in to see changes."
 		setzsh = call("chsh -s $(which zsh)", shell = True)
+		zshhistory = call("touch ~/.zshistory". shell = True)
 
 def envArch():
 	sudocheck()
