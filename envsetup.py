@@ -17,7 +17,7 @@ vimdirurl = "https://github.com/staticsafe/dotfiles/raw/master/vimdir.tar.bz2"
 def sudocheck():
 	#sudocheck
 	sudopath = "/usr/bin/sudo"
-	if os.path.isfile(sudopath) == True:
+	if os.path.isfile(sudopath) == False:
 		print 'This script needs sudo to run!'
 		raise SystemExit
 	else:
