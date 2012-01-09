@@ -23,3 +23,4 @@ setopt inc_append_history
 alias rmdir='rm -r'
 alias sl='ls'
 alias octalperm="stat -c '%A %a %n' *"
+alias myip="wget -qO- ifconfig.me/ip"
