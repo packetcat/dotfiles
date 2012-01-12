@@ -22,6 +22,6 @@ setopt inc_append_history
 #aliases
 alias rmdir='rm -r'
 alias sl='ls'
-alias octalperm="stat -c '%A %a %n' *"
+alias octalperm="ls -l | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf("%0o ",k);print}'"
 alias myip="wget -qO- ifconfig.me/ip"
 alias memoryhog="ps aux | sort -nk +4 | tail"
