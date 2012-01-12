@@ -9,7 +9,9 @@ prompt elite2
 setopt APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt EXTENDED_GLOB
+setopt AUTO_CD
 
+#history stuff
 # number of lines kept in history
 export HISTSIZE=1000
 # number of lines saved in the history after logout
@@ -18,6 +20,12 @@ export SAVEHIST=1000
 export HISTFILE=~/.zhistory
 # append command to history file once executed
 setopt inc_append_history
+# Do not write events to history that are duplicates of previous events
+setopt HIST_IGNORE_DUPS
+# When searching history don't display results already cycled through twice
+setopt HIST_FIND_NO_DUPS
+# Remove extra blanks from each command line being added to history
+setopt HIST_REDUCE_BLANKS
 
 #aliases
 alias rmdir='rm -r'
