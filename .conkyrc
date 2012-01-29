@@ -1,0 +1,116 @@
+﻿# thanks Swathe for this
+
+alignment top_right
+double_buffer yes
+gap_x 5
+gap_y 5
+update_interval 2.0
+background yes
+own_window yes
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_type normal
+own_window_class conky-semi
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+minimum_size 230 5
+maximum_width 230
+use_xft yes
+xftalpha 0.5
+xftfont Sans:size=7
+
+TEXT
+${font openlogos:size=20}${font Arial:size=15}${color #0088cc}KRAKEN ${color Ivory}${font openlogos:size=15}STATS${font }
+${font size=7}${color slate grey}Infos $hr${color }${font }
+
+Kernel: ${alignr}$kernel ($machine)
+Uptime: ${alignr}$uptime
+Time: ${alignr}${time %H:%M:%S}
+Date: ${alignr}${time %d.%m.%y}
+User: ${alignr}$alignc${exec whoami} @ $nodename
+Filesystem: $alignr${fs_type}
+
+${font size=7}${color slate grey}Intel Core i5 2300 $hr${color }${font }
+
+CPU1 ${alignr}${cpu cpu1}%
+${cpugraph cpu1 10, 200}
+
+CPU2 ${alignr}${cpu cpu2}%
+${cpugraph cpu2 10, 200}
+
+CPU3 ${alignr}${cpu cpu3}%
+${cpugraph cpu3 10, 200}
+
+CPU4 ${alignr}${cpu cpu4}%
+${cpugraph cpu4 10, 200}
+
+#CPU5 ${alignr}${cpu cpu5}%
+#${cpugraph cpu4 10, 200}
+
+#CPU6 ${alignr}${cpu cpu6}%
+#${cpugraph cpu4 10, 200}
+
+${font size=7}${color slate grey}Ram Usage $hr${color }${font }
+
+RAM ${alignr}$mem/$memmax
+${membar 6, 200}
+
+Swap ${alignr}$swap/$swapmax
+${swapbar 6, 200}
+
+${font size=7}${color slate grey}Filesystem $hr${color }${font }
+
+/ ${alignr}${fs_free /}
+${fs_bar 6, 200 /}
+
+home ${alignr}${fs_free /home}
+${fs_bar 6, 200 /home}
+
+Ownage3 ${alignr}${fs_free /media/Ownage3}
+${fs_bar 6, 200 /media/Ownage3}
+
+Ownage4 ${alignr}${fs_free /media/Ownage4}
+${fs_bar 6, 200 /media/Ownage4}
+
+#Extra ${alignr}${fs_free /home/swathe/Extra}
+#${fs_bar 6, 200 /home/swathe/Extra}
+
+#Stuff ${alignr}${fs_free /home/swathe/Stuff}
+#${fs_bar 6, 200 /home/swathe/Stuff}
+
+${font size=7}${color slate grey}Top CPU Tasks $hr${color }${font }
+
+${color #ddaa00}${top name 1}${alignr}${top cpu 1}%${color }
+${top name 2}${alignr}${top cpu 2}%
+${top name 3}${alignr}${top cpu 3}%
+${top name 4}${alignr}${top cpu 4}%
+${top name 5}${alignr}${top cpu 5}%
+
+${font size=7}${color slate grey}Top RAM Tasks  $hr${color }${font }
+
+${color #ddaa00}${top_mem name 1}${alignr}${top_mem mem 1}%${color }
+${top_mem name 2}${alignr}${top_mem mem 2}%
+${top_mem name 3}${alignr}${top_mem mem 3}%
+${top_mem name 4}${alignr}${top_mem mem 4}%
+${top_mem name 5}${alignr}${top_mem mem 5}%
+
+${font size=7}${color slate grey}Network $hr${color }${font }
+IP (Lan): $alignr${addr eth0}
+IP (Public): $alignr${execi 600 wget http://checkip.dyndns.org/ -q -O - | grep -Eo '\<[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){3}\>'}
+Total Down $alignr${totaldown eth0}
+Total Up   $alignr${totalup eth0}
+
+Download ${alignr}${downspeed eth0}
+${downspeedgraph eth0 10, 200}
+
+Upload ${alignr}${upspeed eth0}
+${upspeedgraph eth0 10, 200}
+
+Outbound Connections:
+${tcp_portmon 1 65535 rhost 0}:${tcp_portmon 1 65535 rport 0}
+${tcp_portmon 1 65535 rhost 1}:${tcp_portmon 1 65535 rport 1}
+${tcp_portmon 1 65535 rhost 2}:${tcp_portmon 1 65535 rport 2}
+${tcp_portmon 1 65535 rhost 3}:${tcp_portmon 1 65535 rport 3}
+${tcp_portmon 1 65535 rhost 4}:${tcp_portmon 1 65535 rport 4}
+${tcp_portmon 1 65535 rhost 5}:${tcp_portmon 1 65535 rport 5}
+${tcp_portmon 1 65535 rhost 6}:${tcp_portmon 1 65535 rport 6}
+${tcp_portmon 1 65535 rhost 7}:${tcp_portmon 1 65535 rport 7}
