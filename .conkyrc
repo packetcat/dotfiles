@@ -4,7 +4,7 @@ alignment top_right
 double_buffer yes
 gap_x 5
 gap_y 5
-update_interval 2.0
+update_interval 1.0
 background yes
 own_window yes
 own_window_transparent yes
@@ -19,7 +19,7 @@ xftalpha 0.5
 xftfont Sans:size=7
 
 TEXT
-${font openlogos:size=20}${font Arial:size=15}${color #0088cc}KRAKEN ${color Ivory}${font openlogos:size=15}STATS${font }
+${font openlogos:size=20}${font Arial:size=15}${color #0088cc}EXCALIBUR ${color Ivory}${font openlogos:size=15}${font }
 ${font size=7}${color slate grey}Infos $hr${color }${font }
 
 Kernel: ${alignr}$kernel ($machine)
@@ -65,17 +65,14 @@ ${fs_bar 6, 200 /}
 home ${alignr}${fs_free /home}
 ${fs_bar 6, 200 /home}
 
+Ownage ${alignr}${fs_free /media/Ownage}
+${fs_bar 6, 200 /media/Ownage}
+
 Ownage3 ${alignr}${fs_free /media/Ownage3}
 ${fs_bar 6, 200 /media/Ownage3}
 
 Ownage4 ${alignr}${fs_free /media/Ownage4}
 ${fs_bar 6, 200 /media/Ownage4}
-
-#Extra ${alignr}${fs_free /home/swathe/Extra}
-#${fs_bar 6, 200 /home/swathe/Extra}
-
-#Stuff ${alignr}${fs_free /home/swathe/Stuff}
-#${fs_bar 6, 200 /home/swathe/Stuff}
 
 ${font size=7}${color slate grey}Top CPU Tasks $hr${color }${font }
 
@@ -105,12 +102,19 @@ ${downspeedgraph eth0 10, 200}
 Upload ${alignr}${upspeed eth0}
 ${upspeedgraph eth0 10, 200}
 
-Outbound Connections:
-${tcp_portmon 1 65535 rhost 0}:${tcp_portmon 1 65535 rport 0}
-${tcp_portmon 1 65535 rhost 1}:${tcp_portmon 1 65535 rport 1}
-${tcp_portmon 1 65535 rhost 2}:${tcp_portmon 1 65535 rport 2}
-${tcp_portmon 1 65535 rhost 3}:${tcp_portmon 1 65535 rport 3}
-${tcp_portmon 1 65535 rhost 4}:${tcp_portmon 1 65535 rport 4}
-${tcp_portmon 1 65535 rhost 5}:${tcp_portmon 1 65535 rport 5}
-${tcp_portmon 1 65535 rhost 6}:${tcp_portmon 1 65535 rport 6}
-${tcp_portmon 1 65535 rhost 7}:${tcp_portmon 1 65535 rport 7}
+#Outbound Connections:
+#${tcp_portmon 1 65535 rhost 0}:${tcp_portmon 1 65535 rport 0}
+#${tcp_portmon 1 65535 rhost 1}:${tcp_portmon 1 65535 rport 1}
+#${tcp_portmon 1 65535 rhost 2}:${tcp_portmon 1 65535 rport 2}
+#${tcp_portmon 1 65535 rhost 3}:${tcp_portmon 1 65535 rport 3}
+#${tcp_portmon 1 65535 rhost 4}:${tcp_portmon 1 65535 rport 4}
+#${tcp_portmon 1 65535 rhost 5}:${tcp_portmon 1 65535 rport 5}
+#${tcp_portmon 1 65535 rhost 6}:${tcp_portmon 1 65535 rport 6}
+#${tcp_portmon 1 65535 rhost 7}:${tcp_portmon 1 65535 rport 7}
+
+${font size=7}${color slate grey}Now Playing $hr${color }${font }
+Artist: ${alignr}${mpd_artist}
+Title: ${alignr}${mpd_title 35}
+Album: ${alignr}${mpd_album}
+$mpd_bar
+$mpd_elapsed/$mpd_length ${alignc}$mpd_status ${alignr}$mpd_percent%
