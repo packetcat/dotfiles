@@ -13,6 +13,7 @@ vimrcurl = "https://raw.github.com/staticsafe/dotfiles/master/.vimrc"
 zshrcurl = "https://raw.github.com/staticsafe/dotfiles/master/.zshrc"
 tmuxurl = "https://raw.github.com/staticsafe/dotfiles/master/.tmux.conf"
 vimdirurl = "http://dl.dropbox.com/u/2888062/vimdir.tar.bz2"
+conkyrc = "https://raw.github.com/staticsafe/dotfiles/master/.conkyrc"
 envupdate = "https://raw.github.com/staticsafe/dotfiles/master/envupdate.sh"
 
 def sudocheck():
@@ -55,6 +56,7 @@ def checksandactions():
 	zshrcdir = os.path.join(os.environ['HOME'], ".zshrc")
 	tmuxconfdir = os.path.join(os.environ['HOME'], ".tmux.conf")
 	vimdir = os.path.join(os.environ['HOME'], ".vim")
+	conkydir = os.path.join(os.environ['HOME'], ".conkyrc")
 	usershell = os.getenv('SHELL')
 	
 	#checks to prevent clobbering
@@ -79,6 +81,11 @@ def checksandactions():
 		urldownload(confurl = vimdirurl)
 		untar = call("tar pxvf vimdir.tar.bz2 && rm vimdir.tar.bz2", shell = True)
 	
+	if os.path.isfile(conkydir) == True:
+		print ".conkyrc already exists, skipping download!"
+	else:
+		urldownload(confurl = conkydir)
+	
 	if usershell == "/bin/zsh":
 		print "Your default shell is already zsh! Skipping."
 	else:
@@ -89,6 +96,7 @@ def checksandactions():
     #Downloads environment update script
     urldownload(confurl = envupdate)
     scriptperm = call("chmod a+x envupdate.sh", shell = True)
+
 def envArch():
 	sudocheck()
 	#Install relevant packages
