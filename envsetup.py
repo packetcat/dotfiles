@@ -26,6 +26,15 @@ def sudocheck():
 	else:
 		print 'Sudo check: PASSED!'
 
+def macportscheck():
+	# This function checks if MacPorts exists on a OSX machine or not
+	portspath = "/opt/local/bin/port"
+	if os.path.isfile(portspath) === False:
+		print "We need MacPorts to run this script for you! Get it from here - http://www.macports.org/"
+		raise SystemExit
+	else:
+		print "MacPorts check: PASSED!"
+
 def urldownload(confurl = ""):
 	#Thanks PabloG from StackOverflow for this little snippet - http://stackoverflow.com/a/22776
 	url = confurl
@@ -125,6 +134,15 @@ def envDebian():
 	#Get relevant dotfiles
 	checksandactions()
 
+def envOSX():
+	sudocheck()
+	macportscheck()
+	#Install relevant packages
+	installpackages = call ("sudo /opt/local/bin/port install vim zsh tmux git subversion", shell=True)
+
+	#Get relevant dotfiles
+	checksandactions()
+
 def main():
 	#homedircheck
 	homedir = os.environ['HOME']
@@ -138,6 +156,7 @@ def main():
 	
 	#distrocheck
 	userdistro = platform.linux_distribution()
+	osxcheck = platform.uname() # linux_distribution is useless on OSX so we use this
 
 	if userdistro[0] == "Fedora":
 		envFedora()
@@ -147,6 +166,8 @@ def main():
 		envArch()
 	elif userdistro[0] == "Ubuntu":
 		envDebian()
+	elif osxcheck[0] == "Darwin":
+		envOSX()
 	else:
 		print "This script is not supported for your distro, exiting."
 		raise SystemExit
