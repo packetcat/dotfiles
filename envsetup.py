@@ -7,6 +7,7 @@ import os
 from subprocess import call
 import platform
 import urllib2
+import tarfile
 
 #global vars
 vimrcurl = "https://raw.github.com/staticsafe/dotfiles/master/.vimrc"
@@ -79,7 +80,10 @@ def checksandactions():
 		print ".vim dir already exists, skipping download!"
 	else:
 		urldownload(confurl = vimdirurl)
-		untar = call("tar pxvf vimdir.tar.bz2 && rm vimdir.tar.bz2", shell = True)
+		#untar = call("tar pxvf vimdir.tar.bz2 && rm vimdir.tar.bz2", shell = True)
+		tar = tarfile.open("vimdir.tar.bz2")
+		tar.extractall()
+		tar.close()
 	
 	if os.path.isfile(conkydir) == True:
 		print ".conkyrc already exists, skipping download!"
