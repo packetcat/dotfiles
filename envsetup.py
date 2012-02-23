@@ -97,7 +97,7 @@ def checksandactions():
 	if os.path.isfile(conkydir) == True:
 		print ".conkyrc already exists, skipping download!"
 	else:
-		urldownload(confurl = conkydir)
+		urldownload(confurl = conkyrc)
 	
 	if usershell == "/bin/zsh":
 		print "Your default shell is already zsh! Skipping."
@@ -107,8 +107,8 @@ def checksandactions():
 		zshhistory = call("touch ~/.zhistory", shell = True)
     
     #Downloads environment update script
-    print "downloading environment update script"
-    urldownload(confurl = envupdate)
+    	print "downloading environment update script"
+    	urldownload(confurl = envupdate)
    	scriptperm = call("chmod a+x envupdate.sh", shell = True)
 
 def envArch():
