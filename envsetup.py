@@ -29,7 +29,7 @@ def sudocheck():
 def macportscheck():
 	# This function checks if MacPorts exists on a OSX machine or not
 	portspath = "/opt/local/bin/port"
-	if os.path.isfile(portspath) === False:
+	if os.path.isfile(portspath) == False:
 		print "We need MacPorts to run this script for you! Get it from here - http://www.macports.org/"
 		raise SystemExit
 	else:
