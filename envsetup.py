@@ -107,8 +107,9 @@ def checksandactions():
 		zshhistory = call("touch ~/.zhistory", shell = True)
     
     #Downloads environment update script
+    print "downloading environment update script"
     urldownload(confurl = envupdate)
-    scriptperm = call("chmod a+x envupdate.sh", shell = True)
+   	scriptperm = call("chmod a+x envupdate.sh", shell = True)
 
 def envArch():
 	sudocheck()
