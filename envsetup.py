@@ -104,12 +104,7 @@ def checksandactions():
 	else:
 		print "Setting default shell for this user to zsh! Log out and log back in to see changes."
 		setzsh = call("chsh -s $(which zsh)", shell = True)
-		zshhistory = call("touch ~/.zhistory", shell = True)
-    
-    #Downloads environment update script
-    	print "downloading environment update script"
-    	urldownload(confurl = envupdate)
-   	scriptperm = call("chmod a+x envupdate.sh", shell = True)
+		zshhistory = call("touch ~/.zhistory", shell = True) 
 
 def envArch():
 	sudocheck()
