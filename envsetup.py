@@ -89,7 +89,6 @@ def checksandactions():
 		print ".vim dir already exists, skipping download!"
 	else:
 		urldownload(confurl = vimdirurl)
-		#untar = call("tar pxvf vimdir.tar.bz2 && rm vimdir.tar.bz2", shell = True)
 		tar = tarfile.open("vimdir.tar.bz2")
 		tar.extractall()
 		tar.close()
