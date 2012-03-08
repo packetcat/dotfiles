@@ -25,13 +25,18 @@ tar xjvf vimdir.tar.bz2
 
 # zsh dir
 
-if [ -d "~/dev/dotfiles" ] ; then
-    cd ~/dev/dotiles
+if [[ -d ~/dev/dotfiles ]]; then
+    cd ~/dev/dotfiles
     git pull
-    ln -s ~/dev/dotfiles/.zsh ~/.zsh
+    ln -s ~/dev/dotfiles/.zsh ~/
 else
+    if [[ -d ~/.zsh ]]; then
+        rm ~/.zsh
+    else
+        printf '%s\n' "No .zsh dir exists."
+    fi
     mkdir ~/dev
     cd ~/dev
     git clone https://github.com/staticsafe/dotfiles.git
-    ln -s ~/dev/dotfiles/.zsh ~/.zsh
+    ln -s ~/dev/dotfiles/.zsh ~/
 fi
