@@ -22,3 +22,16 @@ wget --no-check-certificate -O .conkyrc https://raw.github.com/staticsafe/dotfil
 rm -r ~/.vim
 wget -O vimdir.tar.bz2 http://dl.dropbox.com/u/2888062/vimdir.tar.bz2 || die 'Download failed!'
 tar xjvf vimdir.tar.bz2
+
+# zsh dir
+
+if [ -d "~/dev/dotfiles" ] ; then
+    cd ~/dev/dotiles
+    git pull
+    ln -s ~/dev/dotfiles/.zsh ~/.zsh
+else
+    mkdir ~/dev
+    cd ~/dev
+    git clone https://github.com/staticsafe/dotfiles.git
+    ln -s ~/dev/dotfiles/.zsh ~/.zsh
+fi
