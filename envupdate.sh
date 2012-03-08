@@ -31,7 +31,7 @@ if [[ -d ~/dev/dotfiles ]]; then
     ln -s ~/dev/dotfiles/.zsh ~/
 else
     if [[ -d ~/.zsh ]]; then
-        rm ~/.zsh
+        rm -r ~/.zsh
     else
         printf '%s\n' "No .zsh dir exists."
     fi
