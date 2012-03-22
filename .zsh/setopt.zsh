@@ -11,3 +11,6 @@ setopt APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt EXTENDED_GLOB
 setopt AUTO_CD
+
+# Turn off flow controll
+unsetopt flowcontrol
