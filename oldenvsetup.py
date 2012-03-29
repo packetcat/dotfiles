@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+#Script has been deprecated.
 #Personal environment setup script
 #Dependencies - Supported distros, sudo, python2
 
