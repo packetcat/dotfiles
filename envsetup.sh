@@ -50,7 +50,7 @@ changeshell() {
 }
 
 linkfiles() {
-     find ~/dev/dotfiles -type f -name ".*" -exec ln -s -f {}
+     find ~/dev/dotfiles -type f -name ".*" -execdir ln -s -f {}
             --target-directory=$HOME \;
      ln -s ~/dev/dotfiles/.zsh $HOME
      ln -s ~/dev/dotfiles/.vim $HOME
