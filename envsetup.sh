@@ -46,14 +46,19 @@ changeshell() {
         printf '%s\n' "Your default shell is already zsh, continuing."
     else
         chsh -s $(which zsh)
+        printf '%s\n' "Default shell changed to zsh, logout and login to see changes"
     fi
 }
 
 linkfiles() {
-     find ~/dev/dotfiles -type f -name ".*" -execdir ln -s -f {}
-            --target-directory=$HOME \;
-     ln -s ~/dev/dotfiles/.zsh $HOME
-     ln -s ~/dev/dotfiles/.vim $HOME
+     #find ~/dev/dotfiles -type f -name ".*" -execdir ln -s -f {}
+     #       --target-directory=$HOME \; # removed until I can figure out the issue
+     ln -sf ~/dev/dotfiles/.zshrc $HOME/
+     ln -sf ~/dev/dotfiles/.vimrc $HOME/
+     ln -sf ~/dev/dotfiles/.tmux.conf $HOME/
+     ln -sf ~/dev/dotfiles/.conkyrc $HOME/
+     ln -sf ~/dev/dotfiles/.zsh $HOME/
+     ln -sf ~/dev/dotfiles/.vim $HOME/
      touch ~/.zhistory
 }
 
