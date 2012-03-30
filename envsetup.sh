@@ -3,8 +3,6 @@
 # Environment setup redone in bash, because using call in Python is lame
 # Basic requirements - bash, sudo (Also make sure your user has sudo privileges!)
 
-# TODO - OSX MacPorts support
-
 # a die function as always
 die() {
     printf '%s\n' "$@" >&2
@@ -15,6 +13,8 @@ die() {
 
 userdistro="NULL"
 repo="https://github.com/staticsafe/dotfiles.git"
+
+portpath="/opt/local/bin/port" # This is the default install directory for the MacPorts port binary, you may find this useful.
 
 # Lets get this party on the road, shall we?
 
@@ -27,6 +27,7 @@ distrocheck() {
     hash apt-get &>/dev/null && userdistro="Debian" # For Debian based distros.
     hash yum &>/dev/null && userdistro="Fedora" # For RHEL/CentOS/Fedora
     hash pacman &>/dev/null && userdistro="Arch" # For Arch Linux
+    hash port &>/dev/null && userdistro="OSX" # For OSX, make sure the port binary is in your PATH first.
 }
 
 installpackages() {
@@ -36,6 +37,9 @@ installpackages() {
         sudo yum install -y vim zsh tmux git subversion
     elif [[ "$userdistro" == "Arch" ]]; then
         sudo pacman --no-confirm -S vim zsh tmux git subversion
+    elif [[ "$userdistro" == "OSX" ]]; then
+        sudo port install vim zsh tmux git subversion
+        #echo "export PATH=/opt/local/bin:/opt/local/sbin:$PATH" >> ~/.zshenv # This adds the port binary path, so that zsh can use it after, commented out by default.
     else
         die 'Your distro does not have a package manager supported by this script, exiting!'
     fi
