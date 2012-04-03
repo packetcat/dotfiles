@@ -32,13 +32,13 @@ distrocheck() {
 
 installpackages() {
     if [[ "$userdistro" == "Debian" ]]; then
-        sudo apt-get install --assume-yes vim zsh tmux git subversion
+        sudo apt-get install --assume-yes vim zsh tmux git subversion most
     elif [[ "$userdistro" == "Fedora" ]]; then
-        sudo yum install -y vim zsh tmux git subversion
+        sudo yum install -y vim zsh tmux git subversion most
     elif [[ "$userdistro" == "Arch" ]]; then
-        sudo pacman --no-confirm -S vim zsh tmux git subversion
+        sudo pacman --no-confirm -S vim zsh tmux git subversion most
     elif [[ "$userdistro" == "OSX" ]]; then
-        sudo port install vim zsh tmux git subversion
+        sudo port install vim zsh tmux git subversion most
         #echo "export PATH=/opt/local/bin:/opt/local/sbin:$PATH" >> ~/.zshenv # This adds the port binary path, so that zsh can use it after, commented out by default.
     else
         die 'Your distro does not have a package manager supported by this script, exiting!'

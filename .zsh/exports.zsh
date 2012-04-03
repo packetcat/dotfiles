@@ -1,6 +1,6 @@
 #default apps
 export EDITOR="vim"
-
+export PAGER="most"
 #history stuff
 # number of lines kept in history
 export HISTSIZE=1000
