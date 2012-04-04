@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Environment setup redone in bash, because using call in Python is lame
 # Basic requirements - bash, sudo (Also make sure your user has sudo privileges!)
