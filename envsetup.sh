@@ -32,11 +32,11 @@ distrocheck() {
 
 installpackages() {
     if [[ "$userdistro" == "Debian" ]]; then
-        sudo apt-get install --assume-yes vim zsh tmux git subversion most
+        sudo apt-get install --assume-yes vim zsh tmux git subversion most python-pip
     elif [[ "$userdistro" == "Fedora" ]]; then
-        sudo yum install -y vim zsh tmux git subversion most
+        sudo yum install -y vim zsh tmux git subversion most python-pip
     elif [[ "$userdistro" == "Arch" ]]; then
-        sudo pacman --no-confirm -S vim zsh tmux git subversion most
+        sudo pacman --no-confirm -S vim zsh tmux git subversion most python-pip
     elif [[ "$userdistro" == "OSX" ]]; then
         sudo port install vim zsh tmux git subversion most
         #echo "export PATH=/opt/local/bin:/opt/local/sbin:$PATH" >> ~/.zshenv # This adds the port binary path, so that zsh can use it after, commented out by default.
