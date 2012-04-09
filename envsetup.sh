@@ -28,6 +28,7 @@ distrocheck() {
     hash yum &>/dev/null && userdistro="Fedora" # For RHEL/CentOS/Fedora
     hash pacman &>/dev/null && userdistro="Arch" # For Arch Linux
     hash port &>/dev/null && userdistro="OSX" # For OSX, make sure the port binary is in your PATH first.
+    hash pkg_add &>/dev/null && userdistro="FreeBSD" # For FreeBSD
 }
 
 installpackages() {
@@ -40,6 +41,8 @@ installpackages() {
     elif [[ "$userdistro" == "OSX" ]]; then
         sudo port install vim zsh tmux git subversion most
         #echo "export PATH=/opt/local/bin:/opt/local/sbin:$PATH" >> ~/.zshenv # This adds the port binary path, so that zsh can use it after, commented out by default.
+    elif [[ "$userdistro" == "FreeBSD" ]]; then
+        sudo pkg_add -r vim zsh tmux git subversion most
     else
         die 'Your distro does not have a package manager supported by this script, exiting!'
     fi
@@ -86,4 +89,7 @@ installpackages
 changeshell
 getdotfiles
 
-
+# To make zsh work properly in FreeBSD
+if [[ "$userdistro" == "FreeBSD" ]]; then
+    exec zsh
+fi
