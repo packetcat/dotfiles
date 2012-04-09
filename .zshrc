@@ -3,7 +3,7 @@ compinit
 promptinit
 
 #prompt
-prompt elite2
+prompt clint
 
 source ~/.zsh/setopt.zsh
 source ~/.zsh/exports.zsh
