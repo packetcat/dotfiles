@@ -51,9 +51,11 @@ installpackages() {
 changeshell() {
     if [[ $SHELL == "/usr/bin/zsh" || $SHELL == "/bin/zsh" ]]; then
         printf '%s\n' "Your default shell is already zsh, continuing."
+        exec zsh
     else
         chsh -s $(which zsh)
         printf '%s\n' "Default shell changed to zsh, logout and login to see changes"
+        exec zsh
     fi
 }
 
@@ -89,7 +91,3 @@ installpackages
 changeshell
 getdotfiles
 
-# To make zsh work properly in FreeBSD
-if [[ "$userdistro" == "FreeBSD" ]]; then
-    exec zsh
-fi
