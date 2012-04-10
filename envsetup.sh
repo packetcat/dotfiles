@@ -55,7 +55,6 @@ changeshell() {
     else
         chsh -s $(which zsh)
         printf '%s\n' "Default shell changed to zsh, logout and login to see changes"
-        exec zsh
     fi
 }
 
@@ -90,4 +89,4 @@ distrocheck
 installpackages
 changeshell
 getdotfiles
-
+exec zsh
