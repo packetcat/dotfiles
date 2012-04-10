@@ -51,7 +51,6 @@ installpackages() {
 changeshell() {
     if [[ $SHELL == "/usr/bin/zsh" || $SHELL == "/bin/zsh" ]]; then
         printf '%s\n' "Your default shell is already zsh, continuing."
-        exec zsh
     else
         chsh -s $(which zsh)
         printf '%s\n' "Default shell changed to zsh, logout and login to see changes"
