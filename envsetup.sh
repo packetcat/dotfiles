@@ -39,7 +39,7 @@ installpackages() {
     elif [[ "$userdistro" == "Arch" ]]; then
         sudo pacman --no-confirm -S vim zsh tmux git subversion most python-pip
     elif [[ "$userdistro" == "OSX" ]]; then
-        sudo port install vim zsh tmux git subversion most
+        sudo port install vim zsh tmux git-core git-extras subversion most
         #echo "export PATH=/opt/local/bin:/opt/local/sbin:$PATH" >> ~/.zshenv # This adds the port binary path, so that zsh can use it after, commented out by default.
     elif [[ "$userdistro" == "FreeBSD" ]]; then
         sudo pkg_add -r vim zsh tmux git subversion most
