@@ -11,5 +11,5 @@ exit 1
 
 cd ~/dev/dotfiles
 git pull
-
+exec zsh
 
