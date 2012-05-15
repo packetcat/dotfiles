@@ -14,3 +14,8 @@ setopt AUTO_CD
 
 # Turn off flow control
 setopt noflowcontrol
+
+# Make options
+if [[ -r /proc/cpuinfo ]]; then
+    export MAKEOPTS=-j$(($(grep -c '^processor' /proc/cpuinfo) + 1))
+fi
