@@ -17,3 +17,4 @@ set softtabstop=4
 set autoindent
 set mouse=a
 set hls is
+set encoding=utf-8
