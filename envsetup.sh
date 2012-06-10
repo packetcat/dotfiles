@@ -12,7 +12,7 @@ die() {
 # Some variable(s)
 
 userdistro="NULL"
-repo="https://github.com/staticsafe/dotfiles.git"
+repo="git://github.com/staticsafe/dotfiles.git"
 
 portpath="/opt/local/bin/port" # This is the default install directory for the MacPorts port binary, you may find this useful.
 
