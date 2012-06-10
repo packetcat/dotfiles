@@ -11,3 +11,5 @@ export HISTFILE=~/.zhistory
 # grep options
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
+# language options so I don't get annoyed
+export LANG='en_US-UTF-8'
