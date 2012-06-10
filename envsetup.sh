@@ -29,20 +29,23 @@ distrocheck() {
     hash pacman &>/dev/null && userdistro="Arch" # For Arch Linux
     hash port &>/dev/null && userdistro="OSX" # For OSX, make sure the port binary is in your PATH first.
     hash pkg_add &>/dev/null && userdistro="FreeBSD" # For FreeBSD
+    hash equo &>/dev/null && userdistro="Sabayon" # For Sabayon
 }
 
 installpackages() {
     if [[ "$userdistro" == "Debian" ]]; then
-        sudo apt-get install --assume-yes vim zsh tmux git subversion most python-pip
+        sudo apt-get install --assume-yes vim zsh tmux git subversion mercurial most python-pip
     elif [[ "$userdistro" == "Fedora" ]]; then
-        sudo yum install -y vim zsh tmux git subversion most python-pip
+        sudo yum install -y vim zsh tmux git subversion mercurial most python-pip
     elif [[ "$userdistro" == "Arch" ]]; then
-        sudo pacman --no-confirm -S vim zsh tmux git subversion most python-pip
+        sudo pacman --no-confirm -S vim zsh tmux git mercurial subversion most python-pip
     elif [[ "$userdistro" == "OSX" ]]; then
-        sudo port install vim zsh tmux git-core git-extras subversion most
+        sudo port install vim zsh tmux git-core git-extras mercurial subversion most
         #echo "export PATH=/opt/local/bin:/opt/local/sbin:$PATH" >> ~/.zshenv # This adds the port binary path, so that zsh can use it after, commented out by default.
     elif [[ "$userdistro" == "FreeBSD" && $(uname -s) == "FreeBSD" ]]; then
-        sudo pkg_add -r vim zsh tmux git subversion most
+        sudo pkg_add -r vim zsh tmux git subversion mercurial most py27-pip
+    elif [[ "$userdistro" == "Sabayon" ]]; then
+        sudo equo install vim zsh tmux git subversion mercurial most python-pip
     else
         die 'Your distro does not have a package manager supported by this script, exiting!'
     fi
