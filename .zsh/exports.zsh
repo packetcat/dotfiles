@@ -13,3 +13,4 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 # language
 export LC_ALL=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
