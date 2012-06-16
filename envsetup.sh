@@ -30,6 +30,7 @@ distrocheck() {
     hash port &>/dev/null && userdistro="OSX" # For OSX, make sure the port binary is in your PATH first.
     hash pkg_add &>/dev/null && userdistro="FreeBSD" # For FreeBSD
     hash equo &>/dev/null && userdistro="Sabayon" # For Sabayon
+    hash emerge &>/dev/null && userdistro != "Sabayon" && userdistro="Gentoo" # For Gentoo
 }
 
 installpackages() {
@@ -46,6 +47,8 @@ installpackages() {
         sudo pkg_add -r vim zsh tmux git subversion mercurial most py27-pip
     elif [[ "$userdistro" == "Sabayon" ]]; then
         sudo equo install vim zsh tmux git subversion mercurial most python-pip
+    elif [[ "$userdistro" == "Gentoo" ]]; then
+        sudo emerge vim zsh tmux git subversion mercurial most python
     else
         die 'Your distro does not have a package manager supported by this script, exiting!'
     fi
