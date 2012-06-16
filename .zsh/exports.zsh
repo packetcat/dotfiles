@@ -14,3 +14,9 @@ export GREP_COLOR='1;32'
 # language
 export LC_ALL=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+
+# Make options
+if [[ -r /proc/cpuinfo ]]; then
+    export MAKEOPTS=-j$(($(grep -c '^processor' /proc/cpuinfo) + 1))
+fi
+
