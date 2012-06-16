@@ -11,8 +11,8 @@ die() {
 
 # Some variable(s)
 
-$userdistro="NULL"
-$repo="git://github.com/staticsafe/dotfiles.git"
+userdistro="NULL"
+repo="git://github.com/staticsafe/dotfiles.git"
 
 portpath="/opt/local/bin/port" # This is the default install directory for the MacPorts port binary, you may find this useful.
 
@@ -24,12 +24,12 @@ sudocheck() {
 }
 
 distrocheck() {
-    hash apt-get &>/dev/null && $userdistro="Debian" # For Debian based distros.
-    hash yum &>/dev/null && $userdistro="Fedora" # For RHEL/CentOS/Fedora
-    hash pacman &>/dev/null && $userdistro="Arch" # For Arch Linux
-    hash port &>/dev/null && $userdistro="OSX" # For OSX, make sure the port binary is in your PATH first.
-    hash pkg_add &>/dev/null && $userdistro="FreeBSD" # For FreeBSD
-    hash equo &>/dev/null && $userdistro="Sabayon" # For Sabayon
+    hash apt-get &>/dev/null && userdistro="Debian" # For Debian based distros.
+    hash yum &>/dev/null && userdistro="Fedora" # For RHEL/CentOS/Fedora
+    hash pacman &>/dev/null && userdistro="Arch" # For Arch Linux
+    hash port &>/dev/null && userdistro="OSX" # For OSX, make sure the port binary is in your PATH first.
+    hash pkg_add &>/dev/null && userdistro="FreeBSD" # For FreeBSD
+    hash equo &>/dev/null && userdistro="Sabayon" # For Sabayon
     hash emerge &>/dev/null && $userdistro != "Sabayon" && userdistro="Gentoo" # For Gentoo
 }
 
