@@ -30,7 +30,7 @@ distrocheck() {
     hash port &>/dev/null && userdistro="OSX" # For OSX, make sure the port binary is in your PATH first.
     hash pkg_add &>/dev/null && userdistro="FreeBSD" # For FreeBSD
     hash equo &>/dev/null && userdistro="Sabayon" # For Sabayon
-    hash emerge &>/dev/null && userdistro != "Sabayon" && userdistro="Gentoo" # For Gentoo
+    hash emerge &>/dev/null && $userdistro != "Sabayon" && userdistro="Gentoo" # For Gentoo
 }
 
 installpackages() {
