@@ -14,7 +14,7 @@ die() {
 userdistro="NULL"
 repo="git://github.com/staticsafe/dotfiles.git"
 
-portpath == "/opt/local/bin/port" # This is the default install directory for the MacPorts port binary, you may find this useful.
+portpath="/opt/local/bin/port" # This is the default install directory for the MacPorts port binary, you may find this useful.
 
 # Lets get this party on the road, shall we?
 
