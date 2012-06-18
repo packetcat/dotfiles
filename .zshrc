@@ -1,6 +1,7 @@
-autoload -U compinit promptinit
+autoload -U compinit promptinit edit-command-line
 compinit
 promptinit
+zle -N edit-command-line
 
 #prompt
 prompt clint
