@@ -1,12 +1,9 @@
 #hooks
-function precmd {
-  # vcs_info
-  # Put the string "hostname::/full/directory/path" in the title bar:
-  echo -ne "\e]2;$PWD\a"
-
-  # Put the parentdir/currentdir in the tab
-  echo -ne "\e]1;$PWD:h:t/$PWD:t\a"
-}
+case $TERM in
+        xterm*)
+            precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+            ;;
+esac
 
 function set_running_app {
   printf "\e]1; $PWD:t:$(history $HISTCMD | cut -b7- ) \a"
