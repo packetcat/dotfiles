@@ -2,8 +2,6 @@ colors koehler
 filetype plugin on
 filetype plugin indent on
 syntax on
-let g:pydiction_location = '~/.vim/after/ftplugin/pydiction/complete-dict'
-
 
 set bs=2
 set nocompatible
@@ -33,12 +31,11 @@ if has("autocmd")
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
    
   " Treat .rss files as XML
   autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
