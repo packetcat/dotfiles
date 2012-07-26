@@ -27,7 +27,6 @@ distrocheck() {
     hash apt-get &>/dev/null && userdistro="Debian" # For Debian based distros.
     hash yum &>/dev/null && userdistro="Fedora" # For RHEL/CentOS/Fedora
     hash pacman &>/dev/null && userdistro="Arch" # For Arch Linux
-    hash port &>/dev/null && userdistro="OSX" # For OSX, make sure the port binary is in your PATH first.
     hash pkg_add &>/dev/null && userdistro="FreeBSD" # For FreeBSD
 }
 
@@ -38,21 +37,18 @@ installpackages() {
         sudo yum install -y vim zsh tmux git subversion mercurial most python-pip
     elif [[ "$userdistro" == "Arch" ]]; then
         sudo pacman --noconfirm -S vim zsh tmux git mercurial subversion most python-pip
-    elif [[ "$userdistro" == "OSX" ]]; then
-        sudo port install vim zsh tmux git-core git-extras mercurial subversion most
-        #echo "export PATH=/opt/local/bin:/opt/local/sbin:$PATH" >> ~/.zshenv # This adds the port binary path, so that zsh can use it after, commented out by default.
     elif [[ "$userdistro" == "FreeBSD" && $(uname -s) == "FreeBSD" ]]; then
         sudo pkg_add -r vim zsh tmux git subversion mercurial most py27-pip
     else
-        die 'Your distro does not have a package manager supported by this script, exiting!'
+        printf '%s\n' "Your distro's package manager is not supported in this script, continuing with changing shell & linking dotfiles."
     fi
 }
 
 changeshell() {
-    if [[ $SHELL == "/usr/bin/zsh" || $SHELL == "/bin/zsh" ]]; then
+    if [[ $SHELL == $(command -v zsh) ]]; then
         printf '%s\n' "Your default shell is already zsh, continuing."
     else
-        chsh -s $(which zsh)
+        chsh -s $(command -v zsh)
         printf '%s\n' "Default shell changed to zsh, logout and login to see changes"
     fi
 }
