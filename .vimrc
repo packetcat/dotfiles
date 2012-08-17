@@ -17,6 +17,7 @@ set autoindent
 set mouse=a
 set hls is
 set encoding=utf-8
+set paste
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
