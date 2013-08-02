@@ -1,0 +1,12 @@
+List of tools needed for my environment, dev or otherwise (in no particular
+order):
+- zsh/bash ($SHELL)
+- vim ($EDITOR)
+- most ($PAGER)
+- git/svn
+- tmux
+- multitail
+- weechat
+- mutt
+- mtr
+- ansible
