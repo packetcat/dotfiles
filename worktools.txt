@@ -10,3 +10,5 @@ order):
 - mutt
 - mtr
 - ansible
+- curl/wget
+- dig
