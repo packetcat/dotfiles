@@ -55,4 +55,4 @@ getdotfiles() {
 gitcheck
 changeshell
 getdotfiles
-exec zsh
+exit
