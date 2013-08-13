@@ -12,3 +12,5 @@ order):
 - ansible
 - curl/wget
 - dig
+- gnupg
+- traceroute
