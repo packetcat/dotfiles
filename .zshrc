@@ -4,7 +4,7 @@ promptinit
 zle -N edit-command-line
 
 #prompt
-prompt clint
+prompt redhat
 
 source ~/.zsh/setopt.zsh
 source ~/.zsh/exports.zsh
