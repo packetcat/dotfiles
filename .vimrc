@@ -2,6 +2,7 @@ colors koehler
 filetype plugin on
 filetype plugin indent on
 syntax on
+execute pathogen#infect()
 
 set bs=2
 set nocompatible
