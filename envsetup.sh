@@ -29,8 +29,6 @@ changeshell() {
 }
 
 linkfiles() {
-     #find ~/dev/dotfiles -type f -name ".*" -execdir ln -s -f {}
-     #       --target-directory=$HOME \; # removed until I can figure out the issue
      ln -sf ~/dotfiles/.zshrc $HOME/
      ln -sf ~/dotfiles/.vimrc $HOME/
      ln -sf ~/dotfiles/.tmux.conf $HOME/
@@ -47,7 +45,7 @@ getdotfiles() {
         linkfiles
     else
         cd
-        git clone $repo
+        git clone $repo && cd ~/dotfiles && git submodule init && git submodule update
         linkfiles
     fi
 }
