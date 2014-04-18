@@ -1,8 +1,10 @@
-colors koehler
 filetype plugin on
 filetype plugin indent on
-syntax on
 execute pathogen#infect()
+syntax enable
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
 
 set bs=2
 set nocompatible
