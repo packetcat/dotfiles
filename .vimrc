@@ -3,7 +3,7 @@ filetype plugin indent on
 execute pathogen#infect()
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme koehler
 let g:solarized_termcolors=256
 
 set bs=2
