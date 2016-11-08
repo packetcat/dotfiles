@@ -8,8 +8,6 @@ export HISTSIZE=1000
 export SAVEHIST=1000
 # location of history
 export HISTFILE=~/.zhistory
-# grep options
-export GREP_COLOR='1;32'
 # language
 export LC_ALL=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
