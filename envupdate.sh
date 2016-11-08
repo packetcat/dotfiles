@@ -9,7 +9,7 @@ printf '%s\n' "$@" >&2
 exit 1
 }
 
-cd ~/dev/dotfiles
+cd ~/dotfiles
 git pull
 exec zsh
 
