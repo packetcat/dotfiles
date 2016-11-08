@@ -17,4 +17,6 @@ export TERM=screen-256color
 if [[ -r /proc/cpuinfo ]]; then
     export MAKEOPTS=-j$(($(grep -c '^processor' /proc/cpuinfo) + 1))
 fi
-
+# Pyenv stuff
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
