@@ -20,3 +20,5 @@ fi
 # Pyenv stuff
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+# unset GREP_OPTIONS
+unset GREP_OPTIONS
