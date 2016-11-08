@@ -21,4 +21,5 @@ fi
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 # unset GREP_OPTIONS
+alias grep="/bin/grep $GREP_OPTIONS"
 unset GREP_OPTIONS
